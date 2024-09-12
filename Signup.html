@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 60px;
+    color: #ffffff;
+}
+form {
+    background-color: rgba(255,255,255,0.5);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 0%;
+    
+}
+body{
+    background-image: url("6.png") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"]{
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+input[type="submit"]{
+    background-color: #3a1ed6d6;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #4400ff;
+}
+.logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px; 
+    height: 150px;
+    margin-left: 0px;
+}
+
+header {
+    position: relative;
+    z-index: 100;
+    color: #fff;
+    padding: 10px 0;
+    padding-left: 30%;
+    display: flex;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+.signup{
+    text-decoration: none;
+}
+select{
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <img src="9.png" alt="Zero Hunger Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="donate.html">Donate Food</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Sign In</h1>
+    <form id="registrationForm" action="sign.php" method="post">
+        <label for="job">Select You'r Role </label>
+        <select id="job" name="job">
+            <option value="Select">Select</option>
+            <option value="Doner">Doner</option>
+            <option value="Reciver">Reciver</option>
+            <option value="Devilary Partner">Deliver Partner</option>
+        </select><br>
+
+        <label for="name">Name : </label>
+        <input type="text" id="name" name="name" placeholder="Enter Your name" required><br>
+
+        <label for="phone">Phone Number :</label>
+        <input type="text" id="phone" name="phone" placeholder="Enter Phone number" required><br>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" placeholder="Enter Your Email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter Your Password" required><br>
+        
+        <label for="Confirm password">Confirm Password:</label>
+        <input type="password" id="Confirm password" name="Confirm password" placeholder="Confirm Password" required><br>
+        
+        <input style="justify-content: left;" type="checkbox" id="acceptTerms" name="acceptTerms" required>
+        <p>I accept the terms and conditions</p><br>
+
+        <input type="submit"  name="submit"  value="Sign In">
+    </form>
+</body>
+</html>

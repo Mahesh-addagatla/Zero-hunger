@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            background-image: url(1.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: whitesmoke;
+        }
+
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin-top: 30px;
+            margin-left: 60px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #b46161;
+        }
+        header {
+    position: relative;
+    z-index: 100;
+    color: #fff;
+    padding: 10px 0;
+    padding-left: 30%;
+    display: flex;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+.logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px; 
+    height: 150px;
+    margin-left: 0px;
+}
+h1{
+    margin-top: 80px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <img src="9.png" alt="Zero Hunger Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="donate.html">Donate Food</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <h1>Know the availability</h1>
+    <form id="userForm" action="retreive.php" method="get">
+        <label for="searchInput">Enter Name or Email:</label>
+        <input type="text" id="searchInput" name="searchInput" required>
+        <button type="button" onclick="fetchUserData()">Submit</button>
+    </form>
+
+    <table id="userTable">
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+        </tr>
+    </table>
+
+    <script>
+        function fetchUserData() {
+            var searchInput = document.getElementById('searchInput').value;
+
+            if (searchInput.trim() !== '') {
+                // Clear the table before fetching new data
+                clearTable();
+
+                // Make an AJAX request to fetch user data
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById('userTable').innerHTML = xhr.responseText;
+                    }
+                };
+
+                xhr.open('GET', 'retreive.php?search=' + searchInput, true);
+                xhr.send();
+            } else {
+                alert('Please enter a name or email');
+            }
+        }
+
+        function clearTable() {
+            var table = document.getElementById('userTable');
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Page</title>
+    
+    <style>
+        
+
+    
+        form {
+            background-color:yellow;
+            width: 400px;
+            margin: 0px auto;
+            padding: 20px;
+            
+            
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color:lightcoral;
+        }
+
+        .bun{
+            font-weight: bold;
+        }
+
+        input[type="email"],
+        input[type="text"],
+        input[type="date"],
+        input[type="password"] {
+            margin-bottom: 12px;
+            width: 100%;
+            padding: 15px;
+            
+            border: 2px solid black;
+        }
+
+        .pen{
+            border:2px solid black
+        }
+        table {
+            width: 100%;
+            margin-top: 10px;
+        }
+        input[type="button"] {
+            cursor:pointer;
+            background-color:goldenrod;
+            color:rgb(61, 4, 114);
+            border: solid black;
+            padding: 10px 20px;
+            
+        }
+        
+        
+
+        th{
+            border: 2px solid black;
+            padding: 7px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="margin-top: 20px;text-align: center;">Registration Form</h2>
+    <form id="Registration" action="#" onsubmit="return false;">
+        <table>
+            <tr>
+        <th class="pen"><label for="userName" class="bun">Name</label></th>
+        <td class="pen"><input type="text" id="userName" required></td>
+    </tr>
+    <tr>
+        <th class="pen"><label for="userEmail" class="bun">Email</label></th>
+        <td class="pen"><input type="email" id="userEmail" required></td>
+    </tr>
+    <tr>
+        <th class="pen"><label for="Puser" class="bun">Password</label></th>
+        <td class="pen"><input type="password" id="Puser" required></td>
+    </tr>
+    <tr>
+        <th class="pen"><label for="UserDob" class="bun">Date of Birth</label></th>
+        <td class="pen"><input type="date" id="UserDob" required></td>
+    </tr>
+    </table>
+    <br>
+        <input type="checkbox" id="Accept" required>
+        <label for="Accept" class="bun">Accept the terms and conditions</label><br><br>
+
+        <input type="button" value="Submit" onclick="registration()">
+    
+    </form>
+
+    <!-- Display entered data in a table -->
+    <h2 style="text-align: center;">Entries</h2>
+    <table id="table" border="2">
+        <tr>
+            <th style="color:blue;background-color: lightseagreen;text-align: center;">Name</th>
+            <th style="color:blue;background-color: lightseagreen;text-align: center;">Email</th>
+            <th style="color:blue;background-color: lightseagreen;text-align: center;">Password</th>
+            <th style="color:blue;background-color: lightseagreen;text-align: center;">Date of Birth</th>
+        </tr>
+    </table>
+    <script>
+        function registration() {
+            var userName = document.getElementById("userName").value;
+            var userEmail = document.getElementById("userEmail").value;
+            var Puser = document.getElementById("Puser").value;
+            var UserDob = document.getElementById("UserDob").value;
+            var Accept = document.getElementById("Accept").checked;
+        
+            if (userName === "") {
+                alert("Please enter the name. This field should not be empty");
+                return;
+            } else if (userEmail === "") {
+                alert("Please enter the email");
+                return;
+            } else if (Puser === "") {
+                alert("Please enter the password");
+                return;
+            } else if (UserDob === "") {
+                alert("Please enter the date of birth");
+                return;
+            } else if (!Accept) {
+                alert("Please accept the terms and conditions.");
+                return;
+            }
+        
+            // Create an object to represent the registration data
+            var registrationData = {
+                name: userName,
+                email: userEmail,
+                password: Puser,
+                dob: UserDob
+            };
+        
+            // Retrieve existing data from local storage (if any)
+            var existingData = JSON.parse(localStorage.getItem("registrations")) || [];
+        
+            // Add the new registration data to the array
+            existingData.push(registrationData);
+        
+            // Save the updated data back to local storage
+            localStorage.setItem("registrations", JSON.stringify(existingData));
+        
+            // Create a new row in the table to display the entered data
+            var table = document.getElementById("table");
+            var new1 = table.insertRow(table.rows.length);
+            var c1 = new1.insertCell(0);
+            var c2 = new1.insertCell(1);
+            var c3 = new1.insertCell(2);
+            var c4 = new1.insertCell(3);
+        
+            c1.innerHTML = userName;
+            c2.innerHTML = userEmail;
+            c3.innerHTML = Puser;
+            c4.innerHTML = UserDob;
+        
+            // Clear the form after submitting
+            document.getElementById("Registration").reset();
+        }
+        </script>
+</body>
+</html>

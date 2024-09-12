@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+body{
+  background:linear-gradient(rgb(159, 237, 238),rgb(82, 92, 96));
+  background-size: cover;
+}
+.wrapper {
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  height:100vh;
+  width:100%;
+  background-size:cover;
+  background-position:center;
+}
+.login-box {
+  position: relative;
+  width: 400px;
+  height: 650px;
+  background-color: aliceblue;
+  border-radius: 15px;
+  border: 2px solid rgba(255,255,255,.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+h2 {
+  font-size:2em;
+  color:#161414;
+  text-align:center;
+}
+.input-box {
+  position:relative;
+  width:310px;
+  margin:30px 0;
+  border-bottom:1px solid #110f0f;
+}
+.input-box label {
+  position:absolute;
+  top:50%;
+  left:5px;
+  transform:translateY(-50%);
+  font-size:1em;
+  color:#100f0f;
+  pointer-events:none;
+  transition:.5s;
+}
+.input-box input:focus  ~ label,
+.input-box input:valid  ~ label {
+  top:-5px;
+}
+.input-box input {
+  width:100%;
+  height:50px;
+  background:transparent;
+  border:none;
+  outline:none;
+  font-size:1em;
+  color:#0e0d0d;
+  padding:0 35px 0 5px;
+}
+.input-box .icon {
+  position:absolute;
+  right:8px;
+  top:50%;
+  color: #0e0c0c;
+  transform: translateY(-50%);
+}
+.agree {
+  margin:-15px 0 15px;
+  font-size:.9em;
+  color:#120f0f;
+  display:flex;
+  justify-content:space-between;
+}
+.agree label input {
+  margin-right:3px;
+}
+.agree a {
+  color:#0e0b0b;
+  text-decoration:none;
+}
+.agree a:hover {
+  text-decoration:underline;
+}
+button {
+  width:100%;
+  height:40px;
+  background-color:#1a1818;
+  border:none;
+  border-radius:40px;
+  cursor:pointer;
+  font-size:1em;
+  color:#f3eded;
+  font-weight:500;
+}
+.register-link {
+  font-size:.9em;
+  color:#0b0a0a;
+  text-align:center;
+  margin:25px 0 10px;
+}
+.register-link p a {
+  color:#110e0e;
+  text-decoration:none;
+  font-weight:600;
+}
+.register-link p a:hover {
+  text-decoration:underline;
+}
+@media (max-width:500px) {
+  .login-box {
+    width:100%;
+    height:100vh;
+    border:none;
+    border-radius:0;
+  }
+  .input-box {
+    width:290px;
+  }
+  #table{
+    width: 40%;
+    font-size: medium;
+  }
+}
+.tab{
+  justify-content: center;
+  align-content: center;
+  margin: 10% 23%;
+}
+#table{
+  width:60%;
+  border: 2px solid rgb(239, 228, 228);
+  background-color:rgba(207, 197, 155, 0.8) ;
+  border: 1px solid rgb(158, 158, 122,);
+  align-content:center;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  font-size: larger;
+}
+table tr th,td{
+  padding: 13px;
+}
+.tab h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: bolder;
+}
+</style>
+<body>
+    <div class="wrapper">
+
+        <div class="login-box">
+          <form action="" id="signupForm" onsubmit="saveUserData();return false">
+            <h2>Sign up</h2>
+
+            <div class="input-box">
+              <input id="uname" type="text" required>
+              <label for="uname">userName</label>
+            </div>
+      
+            <div class="input-box">
+              <input id="email" type="email" required>
+              <label for="email">Email</label>
+            </div>
+            
+            <div class="input-box">
+              <p>Date Of Birth</p>
+              <input type="date" required id="dob">
+              <label for="dob"></label>
+            </div>
+
+            <div class="input-box">
+              <input type="password" required id="pass">
+              <label for="pass">Password</label>
+            </div>
+
+            <div class="input-box">
+                <input type="password" required id="cpass">
+                <label for="cpass">Confirm Password</label>
+            </div>
+      
+            <div class="agree">
+              <label><input type="checkbox"> Agree to terms and services</label>
+            </div>
+      
+            <button type="submit">Sign up</button>
+      
+            <div class="register-link">
+              <p>Already have an account?</p> <a href="#">Log in</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="tab">
+        <h2>Entries</h2>
+        <table id="table" border="1">
+          <tr>
+              <th style="text-align: center;">Name</th>
+              <th style="text-align: center;">Email</th>
+              <th style="text-align: center;">Password</th>
+              <th style="text-align: center;">Date of Birth</th>
+          </tr>
+      </table>
+    </div>
+      
+
+</body>
+<script>
+  function saveUserData() {
+      
+      var username = document.getElementById('uname').value;
+      var email = document.getElementById('email').value;
+      var dob = document.getElementById('dob').value;
+      var password = document.getElementById('pass').value;
+      var cpass=document.getElementById('cpass').value;
+
+      if (username === "" || email === "" || password === "" || dob === "") {
+          alert("Please fill in all the required fields.");
+          return;
+      }
+      else if(cpass!==password){
+        alert("Your password doesn't match");
+        return;
+      }
+
+      var userData = {
+          username: username,
+          email: email,
+          dob: dob,
+          password: password
+      };
+
+      if (typeof (Storage) !== "undefined") {
+          var existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+          existingUsers.push(userData);
+
+          localStorage.setItem('users', JSON.stringify(existingUsers));
+
+          updateTable();
+
+          console.log("User Details:", userData);
+      } else {
+          alert("Local storage is not supported in your browser");
+      }
+  }
+
+  function updateTable() {
+      var table = document.getElementById('table');
+
+      table.innerHTML = "<tr><th>Name</th><th>Email</th><th>Password</th><th>Date of Birth</th></tr>";
+
+      var users = JSON.parse(localStorage.getItem('users')) || [];
+
+      for (var i = 0; i < users.length; i++) {
+          var user = users[i];
+          var row = table.insertRow(-1);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+
+          cell1.innerHTML = user.username;
+          cell2.innerHTML = user.email;
+          cell3.innerHTML = user.password; 
+          cell4.innerHTML = user.dob;
+      }
+  }
+
+  updateTable();
+</script>
+</html>
